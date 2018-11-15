@@ -1,4 +1,4 @@
-# database-phoenix
+# [database-phoenix](https://database-server-firebase.firebaseapp.com/)
 
 A demo for how to use Vue, Vuetify, Typescript, and Firestore.
 A rewritten version of my original demo (hence the name Phoenix).
