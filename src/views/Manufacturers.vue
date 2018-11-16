@@ -65,7 +65,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
-import { ComputedOptions } from "Vue";
+import { ComputedOptions } from "vue";
 import { createDecorator } from "vue-class-component";
 import TableCollectionUpdater from "@/components/TableCollectionUpdater.vue";
 import "firebase/app";
