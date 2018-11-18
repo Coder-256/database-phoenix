@@ -1,5 +1,4 @@
 import "firebase/app";
-import "firebase/firestore";
 import { firestore } from "firebase/app";
 
 export type StoreRef =
@@ -143,17 +142,17 @@ export type DocumentItems<Item extends object> = {
 //   }
 // }
 
-export class CollectionUpdater<Item extends object>
+export class FirestoreCollectionUpdater<Item extends object>
   extends FirestoreUpdater<
-    CollectionUpdater<Item>,
+    FirestoreCollectionUpdater<Item>,
     firestore.CollectionReference,
     Item,
     WithID<Item>[]
   >
   implements
-    FirestoreSortableUpdater<CollectionUpdater<Item>, Item>,
-    FirestoreFilterableUpdater<CollectionUpdater<Item>, Item>,
-    FirestorePageableUpdater<CollectionUpdater<Item>> {
+    FirestoreSortableUpdater<FirestoreCollectionUpdater<Item>, Item>,
+    FirestoreFilterableUpdater<FirestoreCollectionUpdater<Item>, Item>,
+    FirestorePageableUpdater<FirestoreCollectionUpdater<Item>> {
   readonly query: firestore.Query;
 
   protected mapSnapshot(snapshot: firestore.QuerySnapshot) {
@@ -243,8 +242,8 @@ export class CollectionUpdater<Item extends object>
     readonly filter: FirestoreFilter<Item>[] = [],
     readonly sort?: FirestoreSortInfo<Item>,
     readonly pageInfo?: FirestorePageInfo,
-    onUpdate?: (updater: CollectionUpdater<Item>) => void,
-    onError?: (updater: CollectionUpdater<Item>, error: Error) => void
+    onUpdate?: (updater: FirestoreCollectionUpdater<Item>) => void,
+    onError?: (updater: FirestoreCollectionUpdater<Item>, error: Error) => void
   ) {
     super(ref, onUpdate, onError);
     var query: firestore.Query = ref;

@@ -1,3 +1,5 @@
+import "./firebase";
+import "firebase/firestore";
 import { firestore } from "firebase/app";
 
 const store = firestore();

@@ -4,24 +4,22 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import "firebase/app";
-import "firebase/firestore";
 import { firestore } from "firebase/app";
 import {
-  CollectionUpdater,
+  FirestoreCollectionUpdater,
   FirestoreSortInfo,
   FirestoreFilter,
   FirestorePageInfo
-} from "../firestoreUpdater";
+} from "@/firestoreUpdater";
 
 @Component
-export default class TableCollectionUpdater<Item extends object> extends Vue {
+export default class CollectionUpdater<Item extends object> extends Vue {
   @Prop() dbRef!: firestore.CollectionReference;
   @Prop() sort?: FirestoreSortInfo<Item>;
   @Prop() filter?: FirestoreFilter<Item>[];
   @Prop() pageSize?: number;
   private pageInfo: FirestorePageInfo | null = null;
-  protected updaterData: CollectionUpdater<Item> | null = null;
+  protected updaterData: FirestoreCollectionUpdater<Item> | null = null;
 
   @Watch("ref")
   @Watch("sort")
@@ -33,7 +31,7 @@ export default class TableCollectionUpdater<Item extends object> extends Vue {
       return;
     }
 
-    const newUpdater = new CollectionUpdater<Item>(
+    const newUpdater = new FirestoreCollectionUpdater<Item>(
       this.dbRef,
       this.filter,
       this.sort,
@@ -57,7 +55,7 @@ export default class TableCollectionUpdater<Item extends object> extends Vue {
     this.$emit("updater", this);
   }
 
-  get updater(): CollectionUpdater<Item> | null {
+  get updater(): FirestoreCollectionUpdater<Item> | null {
     if (!this.updaterData) this.resetUpdater();
     return this.updaterData;
   }
