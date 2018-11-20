@@ -1,4 +1,5 @@
-import firebase from "firebase/app";
+import * as firebase from "firebase/app";
+import "firebase/firestore";
 
 firebase.initializeApp({
   apiKey: "AIzaSyC0L8B4dqS-QGETr5JcdvkZhezdKmjctp8",
@@ -8,3 +9,7 @@ firebase.initializeApp({
   storageBucket: "database-server-firebase.appspot.com",
   messagingSenderId: "1049118732095"
 });
+
+const store = firebase.firestore();
+store.settings({ timestampsInSnapshots: true });
+store.enablePersistence().catch(console.error);
