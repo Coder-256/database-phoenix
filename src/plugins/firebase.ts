@@ -12,4 +12,4 @@ firebase.initializeApp({
 
 const store = firebase.firestore();
 store.settings({ timestampsInSnapshots: true });
-store.enablePersistence().catch(console.error);
+store.enablePersistence({ synchronizeTabs: true }).catch(console.error);

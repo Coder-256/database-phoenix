@@ -4,9 +4,9 @@
       :db-ref="dbRef"
       :page-size="pageSize"
       :sort="sort"
-      @loading="loading = $event;"
-      @input="items = $event;"
-      @updater="updater = $event;"
+      @loading="loading = $event"
+      @input="items = $event"
+      @updater="updater = $event"
     />
     <v-data-table
       flat

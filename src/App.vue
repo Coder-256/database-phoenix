@@ -16,9 +16,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed app clipped-left>
-      <v-toolbar-side-icon
-        @click.stop="drawer = !drawer;"
-      ></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
     </v-toolbar>
     <v-content>
       <v-container fluid> <router-view /> </v-container>
