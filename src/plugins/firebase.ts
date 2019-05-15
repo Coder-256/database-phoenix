@@ -10,6 +10,7 @@ firebase.initializeApp({
   messagingSenderId: "1049118732095"
 });
 
-const store = firebase.firestore();
-store.settings({ timestampsInSnapshots: true });
-store.enablePersistence({ synchronizeTabs: true }).catch(console.error);
+firebase
+  .firestore()
+  .enablePersistence({ synchronizeTabs: true })
+  .catch(console.error);
